@@ -21,26 +21,36 @@ def add_expense(dictionary):
             raise EmptyString("Invalid input! Category cannot be empty.\n")
 
         amount = float(input("Enter amount: "))
+
+        if amount < 0:
+            raise ValueError
     except ValueError:
-        print("Invalid amount! Please enter a number.\n")
+        print("Invalid amount! Please enter a positive number.\n")
     except EmptyString as e:
         print(e)
     else:
-        dictionary[category] = (description, amount)
+        if category in dictionary:
+            dictionary[category].append((description, amount))
+        else:
+            dictionary[category] = [(description, amount)]
         print("Expense added successfully.\n")
 
 
 def view_all_expenses(dictionary):
-    for entry in dictionary:
-        print(f"Category: {entry}")
-        print(f"\t-{dictionary[entry][0]}: ${dictionary[entry][1]:.2f}")
+    for category in dictionary:
+        print(f"Category: {category}")
+        for entry in dictionary[category]:
+            print(f"\t-{entry[0]}: ${entry[1]:.2f}")
     print("")
 
 
 def view_summary(dictionary):
     print("Summary:")
-    for entry in dictionary:
-        print(f"{entry}: ${dictionary[entry][1]:.2f}")
+    for category in dictionary:
+        expense = 0
+        for entry in dictionary[category]:
+            expense += entry[1]
+        print(f"{category}: ${expense:.2f}")
     print("")
 
 
