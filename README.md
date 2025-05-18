@@ -1,4 +1,5 @@
 Capstone Project: Personal Finance Tracker
+
   This program allows the user to track their expenses.
 
 Users can use the program by running the finance_tracker.py file.
