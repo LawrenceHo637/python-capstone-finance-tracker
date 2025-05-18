@@ -7,6 +7,7 @@ Once running, the program will give the user four options to choose from:
   2. View All Expenses
   3. View Summary
   4. Exit
+
 Users can pick an option by inputing a corresponding number (i.e., 1, 2, 3, 4)
 1. Add Expense
    When adding an expense, the program will prompt the user to enter a description, category, and amount for the expense.
